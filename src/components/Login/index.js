@@ -10,6 +10,7 @@ async function loginUser(credentials) {
         },
         body: JSON.stringify(credentials)
     })
+        .then(data => data.json())
 }
 
 export default function Login({ setToken }) {
@@ -27,7 +28,7 @@ export default function Login({ setToken }) {
     return (
     <div className="login-wrapper">
         <h1>Please Log In</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
             <label>
                 <p>Username</p>
                 <input type='text' onChange={e => setUserName(e.target.value)} />
